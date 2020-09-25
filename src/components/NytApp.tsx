@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form } from 'reactstrap';
 import { NytResults } from './NytResults';
+import { Results } from "./Interfaces";
 
 type NytData = {
     search: string,
@@ -12,14 +13,14 @@ type NytData = {
 
 const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'; 
 const key = 'TP959a2kbRzA2l2ge8CRMoGStCNf1vFk';
-let pageNumber = 0;
+let pageNumber : number ;   
 
 class NytApp extends Component<{}, NytData> {
     constructor(props: {}){
         super(props)
         this.state = {
             search: "",
-            startDate: "", //new Date(),
+            startDate: "",//new Date(),
             endDate: "", //new Date(),
             results: [],
             // pageNumber: 0
@@ -46,7 +47,7 @@ class NytApp extends Component<{}, NytData> {
         .catch(err => console.log(err));
     }
 
-     handleSubmit = (event: any) => {
+     handleSubmit = (event: React.FormEvent<HTMLElement>) => {
         // this.setState({
         //     pageNumber: 0
         // })
@@ -56,7 +57,7 @@ class NytApp extends Component<{}, NytData> {
         this.fetchResults();
     }
 
-     changePageNumber = (event: any, direction: string) => {
+     changePageNumber = (event: React.MouseEvent<HTMLElement>, direction: string) => {
         event.preventDefault();
 
         console.log("Change Page", direction,pageNumber)
