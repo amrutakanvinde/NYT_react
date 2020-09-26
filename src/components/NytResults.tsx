@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Results  } from './Interfaces';
+import { Results, Keywords  } from './Interfaces';
 
 type propsData = {
     results: Results[],
@@ -19,7 +19,7 @@ export const NytResults: FunctionComponent<propsData> = (props) => {
                         <p>
                             {result.snippet}
                             <br />
-                            {result.keywords.length > 0 ? `Keywords:${result.keywords.map((r: any) => r.value)}`: ''}
+                            {result.keywords.length > 0 ? `Keywords:${result.keywords.map((r: Keywords) => r.value)}`: ''}
                         </p>
                         <ul>
                             <a href={result.web_url} ><button>Read it</button></a>
